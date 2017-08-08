@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Weather_Application.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#088A68</Color>
+            <Color x:Key="PrimaryDark">#0B614B</Color>
+            <Color x:Key="Accent">#088A68</Color>
+            <Color x:Key="LightTextColor">#FFFFFF</Color>
+
+            <Style x:Key="DarkButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#088A68" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

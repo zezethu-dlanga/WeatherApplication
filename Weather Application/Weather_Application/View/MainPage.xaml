@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Weather_Application"
+             x:Class="Weather_Application.MainPage">
+
+    <ScrollView Orientation="Vertical">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Entry Text="{Binding CityText}"/>
+            <Button Text="Get City Weather" Command="{Binding GetCityWeatherCommand}"/>
+
+            
+        </StackLayout>
+
+        <!--<StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Spacing="10" IsVisible="{Binding DisplayWeather}">
+                    <Label x:Name="lblDate" FontSize="18" Text="{Binding CurrentDate}" TextColor="{StaticResource LightTextColor}" HorizontalOptions="CenterAndExpand"/>
+                    <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                        <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="50"/>
+                    </ContentView>
+                    <Label x:Name="lblMax" FontSize="24" Text="{Binding Max, StringFormat='{0}° C'}" TextColor="{StaticResource LightTextColor}" HorizontalOptions="CenterAndExpand"/>
+                    <Label x:Name="lblMin" FontSize="18" Text="{Binding Min, StringFormat='{0}° C'}" TextColor="{StaticResource LightTextColor}" HorizontalOptions="CenterAndExpand"/>
+                    <Label x:Name="lblLocation" FontSize="16" Text="{Binding CurrentLocation}" TextColor="{StaticResource LightGrayTextColor}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Padding="20,20,20,20" IsVisible="{Binding DisplayErrorMsg}">
+                    <Label x:Name="lblErrorMsg" FontSize="20" Text="{Binding ErrorMsg}" TextColor="{StaticResource LightGrayTextColor}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+    </ScrollView>
+</ContentPage>

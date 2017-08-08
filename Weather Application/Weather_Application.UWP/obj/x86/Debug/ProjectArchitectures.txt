@@ -1,0 +1,2 @@
+c:\users\zezethu dlanga\documents\visual studio 2017\Projects\Weather Application\Weather Application\Weather_Application.UWP\Weather_Application.UWP.csproj;x86
+c:\users\zezethu dlanga\documents\visual studio 2017\Projects\Weather Application\Weather Application\Weather_Application\Weather_Application.csproj;neutral
