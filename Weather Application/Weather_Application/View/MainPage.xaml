@@ -29,6 +29,6 @@
                 <StackLayout Orientation="Vertical" Padding="20,20,20,20" IsVisible="{Binding DisplayErrorMsg}">
                     <Label x:Name="lblErrorMsg" FontSize="20" Text="{Binding ErrorMsg}" TextColor="{StaticResource LightGrayTextColor}" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
-            </StackLayout>
+            </StackLayout>-->
     </ScrollView>
 </ContentPage>

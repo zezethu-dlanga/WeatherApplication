@@ -23021,16 +23021,16 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zezethu Dlanga\\Documents\\Visual Studio 2017\\Projects\\Weather Application\\Weather Application\\Weather_Application.UWP\\Weather_Application.UWP.csproj",
+      "projectUniqueName": "C:\\Users\\Zezethu Dlanga\\Documents\\WeatherApplication\\Weather Application\\Weather_Application.UWP\\Weather_Application.UWP.csproj",
       "projectName": "Weather_Application.UWP",
-      "projectPath": "C:\\Users\\Zezethu Dlanga\\Documents\\Visual Studio 2017\\Projects\\Weather Application\\Weather Application\\Weather_Application.UWP\\Weather_Application.UWP.csproj",
-      "projectJsonPath": "C:\\Users\\Zezethu Dlanga\\Documents\\Visual Studio 2017\\Projects\\Weather Application\\Weather Application\\Weather_Application.UWP\\project.json",
+      "projectPath": "C:\\Users\\Zezethu Dlanga\\Documents\\WeatherApplication\\Weather Application\\Weather_Application.UWP\\Weather_Application.UWP.csproj",
+      "projectJsonPath": "C:\\Users\\Zezethu Dlanga\\Documents\\WeatherApplication\\Weather Application\\Weather_Application.UWP\\project.json",
       "projectStyle": "ProjectJson",
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\Users\\Zezethu Dlanga\\Documents\\Visual Studio 2017\\Projects\\Weather Application\\Weather Application\\Weather_Application\\Weather_Application.csproj": {
-              "projectPath": "C:\\Users\\Zezethu Dlanga\\Documents\\Visual Studio 2017\\Projects\\Weather Application\\Weather Application\\Weather_Application\\Weather_Application.csproj"
+            "C:\\Users\\Zezethu Dlanga\\Documents\\WeatherApplication\\Weather Application\\Weather_Application\\Weather_Application.csproj": {
+              "projectPath": "C:\\Users\\Zezethu Dlanga\\Documents\\WeatherApplication\\Weather Application\\Weather_Application\\Weather_Application.csproj"
             }
           }
         }
