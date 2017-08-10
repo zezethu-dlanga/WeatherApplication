@@ -8,8 +8,6 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <Entry Text="{Binding CityText}"/>
             <Button Text="Get City Weather" Command="{Binding GetCityWeatherCommand}"/>
-
-            
         </StackLayout>
 
         <!--<StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand">

@@ -17,8 +17,8 @@ namespace WeatherAppTests
         [Test]
         public void GetCityAsync_Return_Expected_Information()
         {
-            var cityName = "Johannesburg";
-            var result = _apiService.GetCityAsync(cityName).Result;
+            var cityName = "Alberton";
+            var result = _apiService.GetCityAsync(cityName);
             Assert.That(result, Is.Not.Null);
         }
         

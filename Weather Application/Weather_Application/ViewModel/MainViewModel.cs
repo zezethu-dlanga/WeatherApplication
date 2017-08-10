@@ -98,6 +98,7 @@ namespace Weather_Application.ViewModel
 
                 var result = await _OpenWeatherAPIService.GetCityAsync(_cityText);
                 
+                
                 if (result != null)
                 {
 
