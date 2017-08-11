@@ -2278,7 +2278,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -4660,7 +4660,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -7081,7 +7081,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -9472,7 +9472,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -11902,7 +11902,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -14293,7 +14293,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -16723,7 +16723,7 @@
           "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
-      "Xamarin.Forms/2.3.4.224": {
+      "Xamarin.Forms/2.3.4.247": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -25359,10 +25359,10 @@
         "xam.plugin.connectivity.nuspec"
       ]
     },
-    "Xamarin.Forms/2.3.4.224": {
-      "sha512": "cjA3h83bCmnEjEYLcvi2n+rPc3rs3kuB/r5z5R/BFtBLp8kgV8AEImKBcYglsZ80uX3OSIVnPXN9lJ25GMGAmg==",
+    "Xamarin.Forms/2.3.4.247": {
+      "sha512": "+6VN8IBSah7EcNJ4SV3pIhNA8tNlBaPLfr3+hQpPIllueJrXI5QtjM0tAJusPc2V1cYyC4YKvA1fs5c/A8RrBw==",
       "type": "package",
-      "path": "xamarin.forms/2.3.4.224",
+      "path": "xamarin.forms/2.3.4.247",
       "files": [
         "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Mono.Cecil.Mdb.dll",
         "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Mono.Cecil.Pdb.dll",
@@ -25451,6 +25451,7 @@
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Core.pdb",
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Core.xml",
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.dll.mdb",
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.pdb",
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Xaml.dll",
         "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Xaml.dll.mdb",
@@ -25512,7 +25513,7 @@
         "lib/wpa81/Xamarin.Forms.Platform.dll",
         "lib/wpa81/Xamarin.Forms.Xaml.dll",
         "lib/wpa81/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.2.3.4.224.nupkg.sha512",
+        "xamarin.forms.2.3.4.247.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -25529,7 +25530,7 @@
       "Microsoft.Net.Http >= 2.2.29",
       "MvvmLight >= 5.3.0",
       "Xam.Plugin.Connectivity >= 3.0.2",
-      "Xamarin.Forms >= 2.3.4.224"
+      "Xamarin.Forms >= 2.3.4.247"
     ],
     "UAP,Version=v10.0": []
   },
@@ -25559,7 +25560,7 @@
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.4",
       "MvvmLight": "5.3.0",
       "Xam.Plugin.Connectivity": "3.0.2",
-      "Xamarin.Forms": "2.3.4.224"
+      "Xamarin.Forms": "[2.3.4.247, )"
     },
     "frameworks": {
       "uap10.0": {}

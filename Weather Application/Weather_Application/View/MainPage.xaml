@@ -23,17 +23,18 @@
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Style="{StaticResource ActivityIndicatorStyle}"/>
 
             <StackLayout IsVisible="{Binding DisplayWeather}" Style="{StaticResource DisplayWeatherStack}">
-                <Label x:Name="lblDate" HorizontalTextAlignment="Center" FontSize="25" Text="{Binding CurrentDate}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="23" Text="{Binding CurrentDate}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="25" Text="{Binding CurrentDescription}"/>
                 <ContentView Padding="0,40,0,40">
                     <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="70"/>
                 </ContentView>
-                <Label x:Name="lblMax" HorizontalTextAlignment="Center" FontSize="26" Text="{Binding Max, StringFormat='{0}° C'}"/>
-                <Label x:Name="lblMin" HorizontalTextAlignment="Center" FontSize="22" Text="{Binding Min, StringFormat='{0}° C'}"/>
-                <Label x:Name="lblLocation" HorizontalTextAlignment="Center" FontSize="18" Text="{Binding CurrentLocation}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="26" Text="{Binding Max, StringFormat='{0}° C'}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="22" Text="{Binding Min, StringFormat='{0}° C'}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="18" Text="{Binding CurrentLocation}"/>
             </StackLayout>
 
             <StackLayout IsVisible="{Binding DisplayErrorMsg}" Style="{StaticResource DisplayErrorStack}">
-                <Label x:Name="lblErrorMsg" FontSize="20" HorizontalTextAlignment="Center" Text="{Binding ErrorMsg}"/>
+                <Label FontSize="20" HorizontalTextAlignment="Center" Text="{Binding ErrorMsg}"/>
             </StackLayout>
         </StackLayout>
     </StackLayout>

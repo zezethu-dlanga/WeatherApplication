@@ -13,17 +13,14 @@ namespace Weather_Application.ViewModel
         IOpenWeatherAPIService _openWeatherAPIService;
         public ICommand GetCityWeatherCommand { protected set; get; }
 
-        private string _cityText;
-        string _currentDate;
-        string _weatherIcon;
-        string _max;
-        string _min;
-        string _currentLocation;
-        bool _isLoading;
-        bool _displayWeather;
-        string _errorMsg;
-        bool _displayErrorMsg;
-        bool _displayWelcomeMsg;
+        string _cityText, _currentDate, _weatherIcon, _currentLocation, _max, _min, _errorMsg, _currentDescription;
+        bool _isLoading, _displayWeather, _displayErrorMsg, _displayWelcomeMsg;
+
+        public string CurrentDescription
+        {
+            get { return _currentDescription; }
+            set { _currentDescription = value; RaisePropertyChanged(); }
+        }
 
         public string CityText
         {
@@ -43,29 +40,22 @@ namespace Weather_Application.ViewModel
             set { _weatherIcon = value; RaisePropertyChanged(); }
         }
         
-
         public string Max
         {
             get { return _max; }
             set { _max = value; RaisePropertyChanged(); } 
         }
+
         public string Min
         {
             get { return _min; }
-            set {
-                _min = value;
-                RaisePropertyChanged();
-            }
+            set { _min = value; RaisePropertyChanged(); }
         }
 
         public string CurrentLocation
         {
             get { return _currentLocation; }
-            set {
-                _currentLocation = value;
-                RaisePropertyChanged();
-            }
-
+            set { _currentLocation = value; RaisePropertyChanged(); }
         }
 
         public bool IsLoading
@@ -125,17 +115,18 @@ namespace Weather_Application.ViewModel
                         if (apiResuslt != null)
                         {
                             CurrentDate = currentDay.ToString("D");
-
+                            
 
                             foreach (var icon in apiResuslt.weather)
                             {
+                                CurrentDescription = icon.description;
                                 WeatherIcon = "http://openweathermap.org/img/w/" + icon.icon + ".png";
                             }
 
                             Max = "max " + apiResuslt.main.temp_max;
                             Min = "min " + apiResuslt.main.temp_min;
 
-                            CurrentLocation = apiResuslt.name;
+                            CurrentLocation = apiResuslt.name + ", " + apiResuslt.sys.country;
 
                             IsLoading = false;
                             DisplayErrorMsg = false;
@@ -143,29 +134,32 @@ namespace Weather_Application.ViewModel
                         }
                         else
                         {
-                            IsLoading = false;
-                            DisplayWeather = false;
-                            DisplayErrorMsg = true;
-                            ErrorMsg = "The city you looking for cannot be found.";
+                            DisplayErrorMessage("The city you looking for cannot be found.");
                         }
                     }
                     else
                     {
-                        IsLoading = false;
-                        DisplayWeather = false;
-                        DisplayErrorMsg = true;
-                        ErrorMsg = "Unable to connect. Please check your network connection and try again.";
+                        DisplayErrorMessage("Unable to connect. Please check your network connection and try again.");
                     }
                 }
                 catch (Exception ex)
                 {
                     var msg = ex.Message;
-                    IsLoading = false;
-                    DisplayWeather = false;
-                    DisplayErrorMsg = true;
-                    ErrorMsg = "The city you looking for cannot be found.";
+                    DisplayErrorMessage("The city you looking for cannot be found.");
                 }
             }
+            else
+            {
+                DisplayErrorMessage("Please type in the name of the city.");
+            }
+        }
+
+        private void DisplayErrorMessage(string errorMsg)
+        {
+            IsLoading = false;
+            DisplayWeather = false;
+            DisplayErrorMsg = true;
+            ErrorMsg = errorMsg;
         }
     }
 }
