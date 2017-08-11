@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using Plugin.Connectivity;
 using System;
 using System.Windows.Input;
 using Weather_Application.Interface;
@@ -6,7 +7,6 @@ using Xamarin.Forms;
 
 namespace Weather_Application.ViewModel
 {
-    
     public class MainViewModel : ViewModelBase
     {
         INavigationService _navigationService;
@@ -109,50 +109,62 @@ namespace Weather_Application.ViewModel
         private async void CityWeatherAsync(object obj)
         {
             DisplayWelcomeMsg = false;
+            DisplayErrorMsg = false;
             IsLoading = true;
             DateTime currentDay = DateTime.Today;
 
             if (!string.IsNullOrEmpty(_cityText))
             {
-                var apiResuslt = await _openWeatherAPIService.GetCityWeatherAsync(_cityText);
-
                 try
                 {
-                    if (apiResuslt != null)
+                    if (CrossConnectivity.Current.IsConnected)
                     {
-                        CurrentDate = currentDay.ToString("D");
+                        var apiResuslt = await _openWeatherAPIService.GetCityWeatherAsync(_cityText);
 
-
-                        foreach (var icon in apiResuslt.weather)
+                    
+                        if (apiResuslt != null)
                         {
-                            WeatherIcon = "http://openweathermap.org/img/w/" + icon.icon + ".png";
+                            CurrentDate = currentDay.ToString("D");
+
+
+                            foreach (var icon in apiResuslt.weather)
+                            {
+                                WeatherIcon = "http://openweathermap.org/img/w/" + icon.icon + ".png";
+                            }
+
+                            Max = "max " + apiResuslt.main.temp_max;
+                            Min = "min " + apiResuslt.main.temp_min;
+
+                            CurrentLocation = apiResuslt.name;
+
+                            IsLoading = false;
+                            DisplayErrorMsg = false;
+                            DisplayWeather = true;
                         }
-
-                        Max = "max " + apiResuslt.main.temp_max;
-                        Min = "min " + apiResuslt.main.temp_min;
-
-                        CurrentLocation = apiResuslt.name;
-
-                        IsLoading = false;
-                        DisplayErrorMsg = false;
-                        DisplayWeather = true;
+                        else
+                        {
+                            IsLoading = false;
+                            DisplayWeather = false;
+                            DisplayErrorMsg = true;
+                            ErrorMsg = "The city you looking for cannot be found.";
+                        }
                     }
                     else
                     {
                         IsLoading = false;
                         DisplayWeather = false;
                         DisplayErrorMsg = true;
-                        ErrorMsg = "The city you looking for cannot be found.";
+                        ErrorMsg = "Unable to connect. Please check your network connection and try again.";
                     }
                 }
                 catch (Exception ex)
                 {
+                    var msg = ex.Message;
                     IsLoading = false;
                     DisplayWeather = false;
                     DisplayErrorMsg = true;
                     ErrorMsg = "The city you looking for cannot be found.";
                 }
-                
             }
         }
     }
