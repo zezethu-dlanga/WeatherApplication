@@ -2,14 +2,60 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Weather_Application.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#088A68</Color>
-            <Color x:Key="PrimaryDark">#0B614B</Color>
-            <Color x:Key="Accent">#088A68</Color>
+            <Color x:Key="Primary">#DF7401</Color>
+            <Color x:Key="PrimaryDark">#B45F04</Color>
+            <Color x:Key="Accent">#DF7401</Color>
             <Color x:Key="LightTextColor">#FFFFFF</Color>
-
-            <Style x:Key="DarkButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#088A68" />
+            
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#DF7401"/>
+                <Setter Property="BorderColor" Value="#B45F04" />
                 <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="ActivityIndicatorStyle" TargetType="ActivityIndicator">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+
+            <Style x:Key="StartStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Spacing" Value="10"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Padding">
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.iOS>20,20,20,20</OnPlatform.iOS>
+                        <OnPlatform.Android>10,10,10,10</OnPlatform.Android>
+                        <OnPlatform.WinPhone>10,10,10,10</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
+            <Style x:Key="EndStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Padding">
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.iOS>20,20,20,20</OnPlatform.iOS>
+                        <OnPlatform.Android>10,10,10,10</OnPlatform.Android>
+                        <OnPlatform.WinPhone>10,10,10,10</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
+            <Style x:Key="DisplayWeatherStack" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+            </Style>
+
+            <Style x:Key="DisplayErrorStack" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

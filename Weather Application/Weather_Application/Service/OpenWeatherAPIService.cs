@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Weather_Application.Interface;
@@ -9,6 +11,7 @@ namespace Weather_Application.Service
 {
     public class OpenWeatherAPIService : IOpenWeatherAPIService
     {
+        
         public async Task<RootObject> GetCityAsync(string cityName)
         {
             var url = "http://api.openweathermap.org/data/2.5/weather?q={0}&appid=2ad5f9d7db7f02f4bafa8821f04f2679";
