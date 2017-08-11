@@ -2,15 +2,13 @@ using GalaSoft.MvvmLight;
 using System.Windows.Input;
 using Weather_Application.Interface;
 using Xamarin.Forms;
-using System;
-using Weather_Application.Service;
 
 namespace Weather_Application.ViewModel
 {
     
     public class MainViewModel : ViewModelBase
     {
-        IOpenWeatherAPIService _OpenWeatherAPIService;
+        IOpenWeatherAPIService _openWeatherAPIService;
         public ICommand GetCityWeatherCommand { protected set; get; }
 
         private string _cityText;
@@ -84,19 +82,17 @@ namespace Weather_Application.ViewModel
             set { _displayErrorMsg = value; }
         }
 
-        public MainViewModel()
+        public MainViewModel(IOpenWeatherAPIService openWeatherAPIService)
         {
+            _openWeatherAPIService = openWeatherAPIService;
             GetCityWeatherCommand = new Command(CityWeatherAsync);
-          
         }
 
         private async void CityWeatherAsync(object obj)
         {
             if (!string.IsNullOrEmpty(_cityText))
             {
-                _OpenWeatherAPIService = new OpenWeatherAPIService();
-
-                var result = await _OpenWeatherAPIService.GetCityAsync(_cityText);
+                var result = await _openWeatherAPIService.GetCityWeatherAsync(_cityText);
                 
                 
                 if (result != null)

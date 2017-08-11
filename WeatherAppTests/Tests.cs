@@ -15,13 +15,12 @@ namespace WeatherAppTests
         }
 
         [Test]
-        public void GetCityAsync_Return_Expected_Information()
+        public void GetCityWeatherAsync_Return_Expected_Information()
         {
             var cityName = "Alberton";
-            var result = _apiService.GetCityAsync(cityName);
+            var result = _apiService.GetCityWeatherAsync(cityName).Result;
             Assert.That(result, Is.Not.Null);
         }
-        
     }
 }
 

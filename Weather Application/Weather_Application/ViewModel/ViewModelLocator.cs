@@ -1,11 +1,12 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using Weather_Application.Interface;
+using Weather_Application.Service;
 
 namespace Weather_Application.ViewModel
 {
     /// <summary>
-    /// This class contains static references to all the view models in the
-    /// application and provides an entry point for the bindings.
+    /// This class provides an entry point for the bindings.
     /// </summary>
     public class ViewModelLocator
     {
@@ -15,8 +16,10 @@ namespace Weather_Application.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            
+
+            //Create loose coupling in the application
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<IOpenWeatherAPIService, OpenWeatherAPIService>();
         }
 
         public MainViewModel Main
