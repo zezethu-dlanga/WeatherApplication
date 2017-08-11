@@ -20,7 +20,6 @@ namespace Weather_Application.Service
             {
                 var response = await client.GetAsync("data/2.5/weather?q=" + cityName + "&appid=2ad5f9d7db7f02f4bafa8821f04f2679");
                 var placesJson = response.Content.ReadAsStringAsync().Result;
-
                 var locationData = JsonConvert.DeserializeObject<RootObject>(placesJson);
 
                 return locationData;

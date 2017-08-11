@@ -5,27 +5,35 @@
              x:Class="Weather_Application.MainPage">
 
 
-    <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical" Spacing="0">
         <StackLayout Style="{StaticResource StartStackLayoutStyle}">
             <Entry Text="{Binding CityText}" Placeholder="Type in city..."/>
             <Button Text="Get City Weather" Command="{Binding GetCityWeatherCommand}" Style="{StaticResource ButtonStyle}"/>
         </StackLayout>
 
+        <StackLayout HeightRequest="1" BackgroundColor="Black"/>
+
         <StackLayout Style="{StaticResource EndStackLayoutStyle}">
+            <StackLayout IsVisible="{Binding DisplayWelcomeMsg}" Style="{StaticResource DisplayWelcomeStack}">
+                <Label FontSize="28" HorizontalTextAlignment="Center" Text="Hello :)"/>
+                <Label FontSize="22" HorizontalTextAlignment="Center" Text="Want to know the weather in a specific city?"/>
+                <Label FontSize="18" HorizontalTextAlignment="Center" Text="Please type in the name of the city, and click on the Get City Weather button."/>
+            </StackLayout>
+            
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Style="{StaticResource ActivityIndicatorStyle}"/>
 
             <StackLayout IsVisible="{Binding DisplayWeather}" Style="{StaticResource DisplayWeatherStack}">
-                <Label x:Name="lblDate" FontSize="18" Text="{Binding CurrentDate}" TextColor="{StaticResource LightTextColor}"/>
+                <Label x:Name="lblDate" HorizontalTextAlignment="Center" FontSize="25" Text="{Binding CurrentDate}"/>
                 <ContentView Padding="0,40,0,40">
-                    <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="50"/>
+                    <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="70"/>
                 </ContentView>
-                <Label x:Name="lblMax" FontSize="24" Text="{Binding Max, StringFormat='{0}° C'}"/>
-                <Label x:Name="lblMin" FontSize="18" Text="{Binding Min, StringFormat='{0}° C'}"/>
-                <Label x:Name="lblLocation" FontSize="16" Text="{Binding CurrentLocation}"/>
+                <Label x:Name="lblMax" HorizontalTextAlignment="Center" FontSize="26" Text="{Binding Max, StringFormat='{0}° C'}"/>
+                <Label x:Name="lblMin" HorizontalTextAlignment="Center" FontSize="22" Text="{Binding Min, StringFormat='{0}° C'}"/>
+                <Label x:Name="lblLocation" HorizontalTextAlignment="Center" FontSize="18" Text="{Binding CurrentLocation}"/>
             </StackLayout>
 
             <StackLayout IsVisible="{Binding DisplayErrorMsg}" Style="{StaticResource DisplayErrorStack}">
-                <Label x:Name="lblErrorMsg" FontSize="20" Text="{Binding ErrorMsg}"/>
+                <Label x:Name="lblErrorMsg" FontSize="20" HorizontalTextAlignment="Center" Text="{Binding ErrorMsg}"/>
             </StackLayout>
         </StackLayout>
     </StackLayout>

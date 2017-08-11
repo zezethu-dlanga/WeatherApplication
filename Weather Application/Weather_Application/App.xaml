@@ -47,9 +47,15 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="DisplayWeatherStack" TargetType="StackLayout">
+            <Style x:Key="DisplayWelcomeStack" TargetType="StackLayout">
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Spacing" Value="15"/>
+            </Style>
+
+            <Style x:Key="DisplayWeatherStack" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="Orientation" Value="Vertical"/>
             </Style>
 
