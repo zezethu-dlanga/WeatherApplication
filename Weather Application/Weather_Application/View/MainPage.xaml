@@ -39,4 +39,12 @@
             </StackLayout>
         </StackLayout>
     </StackLayout>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="HistoryoolbarItem"  Command="{Binding HistoryCommand}" Text="History" Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" iOS="history.png" Android="history.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 </ContentPage>

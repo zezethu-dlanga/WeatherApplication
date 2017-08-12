@@ -73,14 +73,13 @@ namespace Weather_Application.Service
                         c =>
                         {
                             var p = c.GetParameters();
-                            return p.Count() == 1
-    && p[0].ParameterType == parameter.GetType();
+                            return p.Count() == 1 && p[0].ParameterType == parameter.GetType();
                         });
 
                         parameters = new[]
                         {
-parameter
-};
+                            parameter
+                        };
                     }
 
                     if (constructor == null)

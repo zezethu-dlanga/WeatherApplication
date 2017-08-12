@@ -12,6 +12,7 @@ namespace Weather_Application.ViewModel
         INavigationService _navigationService;
         IOpenWeatherAPIService _openWeatherAPIService;
         public ICommand GetCityWeatherCommand { protected set; get; }
+        public ICommand HistoryCommand { protected set; get; }
 
         string _cityText, _currentDate, _weatherIcon, _currentLocation, _temp, _max, _min, _errorMsg, _currentDescription;
         bool _isLoading, _displayWeather, _displayErrorMsg, _displayWelcomeMsg;
@@ -99,10 +100,11 @@ namespace Weather_Application.ViewModel
             _navigationService = navigationService;
             _openWeatherAPIService = openWeatherAPIService;
             GetCityWeatherCommand = new Command(CityWeatherAsync);
+            HistoryCommand = new Command(History);
             _displayWelcomeMsg = true;
         }
 
-        private async void CityWeatherAsync(object obj)
+        private async void CityWeatherAsync()
         {
             DisplayWelcomeMsg = false;
             DisplayErrorMsg = false;
@@ -159,6 +161,11 @@ namespace Weather_Application.ViewModel
             {
                 DisplayErrorMessage("Please type in the name of the city.");
             }
+        }
+
+        public void History()
+        {
+            _navigationService.NavigateTo(Enum.AppPages.History);
         }
 
         private void DisplayErrorMessage(string errorMsg)

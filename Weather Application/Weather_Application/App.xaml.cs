@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 using Weather_Application.Enum;
 using Weather_Application.Interface;
+using Weather_Application.View;
 using Weather_Application.ViewModel;
 using Xamarin.Forms;
 
@@ -30,14 +31,15 @@ namespace Weather_Application
 
                 // Configure pages:
                 navigationService.Configure(AppPages.MainPage, typeof(MainPage));
+                navigationService.Configure(AppPages.History, typeof(HistoryPage));
 
                 // Register NavigationService in IoC container:
                 SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             }
-
             else
+            {
                 navigationService = SimpleIoc.Default.GetInstance<INavigationService>();
-
+            }
             // Create new Navigation Page and set LoginPage as its default page:
 
             var firstPage = new NavigationPage(new MainPage());

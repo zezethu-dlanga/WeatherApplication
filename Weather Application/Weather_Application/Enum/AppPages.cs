@@ -2,6 +2,7 @@
 {
     public enum AppPages
     {
-        MainPage
+        MainPage,
+        History
     }
 }

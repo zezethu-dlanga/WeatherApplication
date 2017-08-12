@@ -19,7 +19,9 @@ namespace Weather_Application.ViewModel
 
             //Create loose coupling in the application
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<HistoryViewModel>();
             SimpleIoc.Default.Register<IOpenWeatherAPIService, OpenWeatherAPIService>();
+            SimpleIoc.Default.Register<IDataStore, LocalDataStore>();
         }
 
         public MainViewModel Main
@@ -29,7 +31,15 @@ namespace Weather_Application.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public HistoryViewModel History
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<HistoryViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
