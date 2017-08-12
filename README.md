@@ -1,7 +1,7 @@
 # WeatherApplication
 Weather Application
 
-The application allows a user to get weather information of a specific city provided he or she provides.
+The application allows a user to get weather information of a specific city he or she types in.
 
 -------------------------------------------------------------------------------------------------------------------------------------
 Created Blank Xamarin.Forms PCL Project that consist of Weather_Application.Android, Weather_Application.iOS, and Weather_Application.UWP.
