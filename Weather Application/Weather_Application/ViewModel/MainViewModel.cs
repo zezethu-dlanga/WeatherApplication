@@ -171,7 +171,8 @@ namespace Weather_Application.ViewModel
 
         private double KelvinToCelsius(double kelvin)
         {
-            return kelvin - 273.15;
+            var results = Math.Round(kelvin - 273.15);
+            return results;
         }
     }
 }
