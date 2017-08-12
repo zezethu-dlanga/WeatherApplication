@@ -13,7 +13,7 @@ namespace Weather_Application.ViewModel
         IOpenWeatherAPIService _openWeatherAPIService;
         public ICommand GetCityWeatherCommand { protected set; get; }
 
-        string _cityText, _currentDate, _weatherIcon, _currentLocation, _max, _min, _errorMsg, _currentDescription;
+        string _cityText, _currentDate, _weatherIcon, _currentLocation, _temp, _max, _min, _errorMsg, _currentDescription;
         bool _isLoading, _displayWeather, _displayErrorMsg, _displayWelcomeMsg;
 
         public string CurrentDescription
@@ -39,7 +39,13 @@ namespace Weather_Application.ViewModel
             get { return _weatherIcon; }
             set { _weatherIcon = value; RaisePropertyChanged(); }
         }
-        
+
+        public string Temp
+        {
+            get { return _temp; }
+            set { _temp = value; RaisePropertyChanged(); }
+        }
+
         public string Max
         {
             get { return _max; }
@@ -115,7 +121,8 @@ namespace Weather_Application.ViewModel
                         if (apiResuslt != null)
                         {
                             CurrentDate = currentDay.ToString("D");
-                            
+
+                            Temp = KelvinToCelsius(apiResuslt.main.temp).ToString();
 
                             foreach (var icon in apiResuslt.weather)
                             {
@@ -123,8 +130,8 @@ namespace Weather_Application.ViewModel
                                 WeatherIcon = "http://openweathermap.org/img/w/" + icon.icon + ".png";
                             }
 
-                            Max = "max " + apiResuslt.main.temp_max;
-                            Min = "min " + apiResuslt.main.temp_min;
+                            Max = "max " + KelvinToCelsius(apiResuslt.main.temp_max);
+                            Min = "min " + KelvinToCelsius(apiResuslt.main.temp_min);
 
                             CurrentLocation = apiResuslt.name + ", " + apiResuslt.sys.country;
 
@@ -160,6 +167,11 @@ namespace Weather_Application.ViewModel
             DisplayWeather = false;
             DisplayErrorMsg = true;
             ErrorMsg = errorMsg;
+        }
+
+        private double KelvinToCelsius(double kelvin)
+        {
+            return kelvin - 273.15;
         }
     }
 }

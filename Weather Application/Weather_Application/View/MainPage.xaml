@@ -24,6 +24,7 @@
 
             <StackLayout IsVisible="{Binding DisplayWeather}" Style="{StaticResource DisplayWeatherStack}">
                 <Label HorizontalTextAlignment="Center" FontSize="23" Text="{Binding CurrentDate}"/>
+                <Label HorizontalTextAlignment="Center" FontSize="28" Text="{Binding Temp, StringFormat='{0}° C'}" TextColor="#B45F04"/>
                 <Label HorizontalTextAlignment="Center" FontSize="25" Text="{Binding CurrentDescription}"/>
                 <ContentView Padding="0,40,0,40">
                     <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="70"/>
