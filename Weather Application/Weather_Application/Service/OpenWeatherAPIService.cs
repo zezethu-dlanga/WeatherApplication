@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
 using Weather_Application.Model;
 
 namespace Weather_Application.Service

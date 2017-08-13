@@ -2,7 +2,7 @@
 using Weather_Application.Enum;
 using Xamarin.Forms;
 
-namespace Weather_Application.Interface
+namespace Weather_Application.Interfaces
 {
     public interface INavigationService
     {

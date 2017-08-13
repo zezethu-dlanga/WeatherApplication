@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Weather_Application.Enum;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
 using Xamarin.Forms;
 
 namespace Weather_Application.Service

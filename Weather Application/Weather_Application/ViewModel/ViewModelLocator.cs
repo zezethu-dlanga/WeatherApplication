@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
 using Weather_Application.Service;
 
 namespace Weather_Application.ViewModel

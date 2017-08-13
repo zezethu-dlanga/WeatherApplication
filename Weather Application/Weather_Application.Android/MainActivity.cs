@@ -19,4 +19,3 @@ namespace Weather_Application.Droid
         }
     }
 }
-

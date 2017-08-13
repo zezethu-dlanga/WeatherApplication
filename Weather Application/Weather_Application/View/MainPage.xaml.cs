@@ -1,4 +1,4 @@
-﻿using Weather_Application.Interface;
+﻿using Weather_Application.Interfaces;
 using Weather_Application.Service;
 using Xamarin.Forms;
 

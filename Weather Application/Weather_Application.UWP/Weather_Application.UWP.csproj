@@ -100,6 +100,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UWPSqlLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -108,6 +109,7 @@
     <None Include="Weather_Application.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background.jpg" />
     <Content Include="Assets\history.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
@@ -142,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Weather_Application\Weather_Application.csproj">
-      <Project>{54bb8abc-f6d9-4c55-bbe0-ad7a89e705df}</Project>
+      <Project>{ef17864e-f428-4d11-a87a-9a1b1c5bd7ea}</Project>
       <Name>Weather_Application</Name>
     </ProjectReference>
   </ItemGroup>

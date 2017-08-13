@@ -1,72 +1,40 @@
 ﻿using SQLite.Net;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
 using Weather_Application.Model;
+using Xamarin.Forms;
 
 namespace Weather_Application.Service
 {
     public class LocalDataStore : IDataStore
     {
-        List<HistoryItem> items;
-        private SQLiteConnection _database;
+        private SQLiteConnection _sqlconnection;
 
         public LocalDataStore()
         {
-            InitializeDatabase();
+            _sqlconnection = DependencyService.Get<ISQLite>().GetConnection();
+            _sqlconnection.CreateTable<HistoryItem>();
+        }
+        
+        public IEnumerable<HistoryItem> GetAllWeatherHistory()
+        {
+            return (from t in _sqlconnection.Table<HistoryItem>() select t).ToList();
+        }
+        
+        public HistoryItem GetWeatherHistory(int id)
+        {
+            return _sqlconnection.Table<HistoryItem>().FirstOrDefault(t => t.Id == id);
         }
 
-        public void InitializeDatabase()
+        public void DeleteWeatherHistory(int id)
         {
-            if (_database != null)
-            {
-                _database.Close();
-                _database.Dispose();
-                _database = null;
-            }
-
-            CreateLocalTables();
+            _sqlconnection.Delete<HistoryItem>(id);
         }
-
-        private void CreateLocalTables()
+        
+        public void AddWeatherHistory(HistoryItem weatherHistory)
         {
-            //_database.DropTable<AuthenticatedUser>();
-            _database.CreateTable<HistoryItem>();
-        }
-
-        public async Task<bool> AddItemAsync(HistoryItem item)
-        {
-            items.Add(item);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> UpdateItemAsync(HistoryItem item)
-        {
-            var _item = items.Where((HistoryItem arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(_item);
-            items.Add(item);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> DeleteItemAsync(HistoryItem item)
-        {
-            var _item = items.Where((HistoryItem arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(_item);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<HistoryItem> GetItemAsync(int id)
-        {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
-        }
-
-        public async Task<IEnumerable<HistoryItem>> GetItemsAsync(bool forceRefresh = false)
-        {
-            return await Task.FromResult(items);
+            _sqlconnection.Insert(weatherHistory);
         }
     }
 }

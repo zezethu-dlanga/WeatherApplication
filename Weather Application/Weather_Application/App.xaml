@@ -6,6 +6,17 @@
             <Color x:Key="PrimaryDark">#B45F04</Color>
             <Color x:Key="Accent">#DF7401</Color>
             <Color x:Key="LightTextColor">#FFFFFF</Color>
+
+            <Style x:Key="MainPageStyle" TargetType="ContentPage">
+                <Setter Property="Title" Value="Weather"/>
+                <Setter Property="BackgroundImage">
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <OnPlatform.iOS>background.jpg</OnPlatform.iOS>
+                        <OnPlatform.Android>background.jpg</OnPlatform.Android>
+                        <OnPlatform.WinPhone>background.jpg</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Setter>
+            </Style>
             
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#DF7401"/>
@@ -36,7 +47,6 @@
             <Style x:Key="EndStackLayoutStyle" TargetType="StackLayout">
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="Orientation" Value="Vertical"/>
                 <Setter Property="Padding">
                     <OnPlatform x:TypeArguments="Thickness">
@@ -62,6 +72,21 @@
             <Style x:Key="DisplayErrorStack" TargetType="StackLayout">
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+
+            <Style x:Key="ListPaddingStyle" TargetType="StackLayout">
+                <Setter Property="Padding">
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.WinPhone>5,0,5,0</OnPlatform.WinPhone>
+                        <OnPlatform.Android>8,3,8,3</OnPlatform.Android>
+                        <OnPlatform.iOS>5,2,5,2</OnPlatform.iOS>
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CenterLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

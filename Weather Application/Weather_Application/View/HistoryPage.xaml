@@ -1,10 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Weather_Application.View.HistoryPage">
+             x:Class="Weather_Application.View.HistoryPage" Title="History">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryData}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Style="{StaticResource ListPaddingStyle}">
+                                <Label Text="{Binding CityName}" HorizontalOptions="StartAndExpand"/>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Temp}"/>
+                                    <Label Text="{Binding ViewDate}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

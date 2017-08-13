@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 using Weather_Application.Enum;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
 using Weather_Application.View;
 using Weather_Application.ViewModel;
 using Xamarin.Forms;

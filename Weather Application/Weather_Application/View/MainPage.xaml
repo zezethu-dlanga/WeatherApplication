@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Weather_Application"
-             x:Class="Weather_Application.MainPage">
+             x:Class="Weather_Application.MainPage" Style="{StaticResource MainPageStyle}">
 
 
     <StackLayout Orientation="Vertical" Spacing="0">
@@ -15,27 +15,27 @@
 
         <StackLayout Style="{StaticResource EndStackLayoutStyle}">
             <StackLayout IsVisible="{Binding DisplayWelcomeMsg}" Style="{StaticResource DisplayWelcomeStack}">
-                <Label FontSize="28" HorizontalTextAlignment="Center" Text="Hello :)"/>
-                <Label FontSize="22" HorizontalTextAlignment="Center" Text="Want to know the weather in a specific city?"/>
-                <Label FontSize="18" HorizontalTextAlignment="Center" Text="Please type in the name of the city, and click on the Get City Weather button."/>
+                <Label FontSize="28" Style="{StaticResource CenterLabelStyle}" Text="Hello :)"/>
+                <Label FontSize="22" Style="{StaticResource CenterLabelStyle}" Text="Want to know the weather in a specific city?"/>
+                <Label FontSize="18" Style="{StaticResource CenterLabelStyle}" Text="Please type in the name of the city, and click on the Get City Weather button."/>
             </StackLayout>
             
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Style="{StaticResource ActivityIndicatorStyle}"/>
 
             <StackLayout IsVisible="{Binding DisplayWeather}" Style="{StaticResource DisplayWeatherStack}">
-                <Label HorizontalTextAlignment="Center" FontSize="23" Text="{Binding CurrentDate}"/>
-                <Label HorizontalTextAlignment="Center" FontSize="28" Text="{Binding Temp, StringFormat='{0}° C'}" TextColor="#B45F04"/>
-                <Label HorizontalTextAlignment="Center" FontSize="25" Text="{Binding CurrentDescription}"/>
-                <ContentView Padding="0,40,0,40">
-                    <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="70"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="23" Text="{Binding CurrentDate}"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="28" Text="{Binding Temp, StringFormat='{0}° C'}" TextColor="#B45F04"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="25" Text="{Binding CurrentDescription}"/>
+                <ContentView Padding="0,15,0,15">
+                    <Image Source="{Binding WeatherIcon}" VerticalOptions="Center" HeightRequest="60"/>
                 </ContentView>
-                <Label HorizontalTextAlignment="Center" FontSize="26" Text="{Binding Max, StringFormat='{0}° C'}"/>
-                <Label HorizontalTextAlignment="Center" FontSize="22" Text="{Binding Min, StringFormat='{0}° C'}"/>
-                <Label HorizontalTextAlignment="Center" FontSize="18" Text="{Binding CurrentLocation}"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="26" Text="{Binding Max, StringFormat='{0}° C'}"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="22" Text="{Binding Min, StringFormat='{0}° C'}"/>
+                <Label Style="{StaticResource CenterLabelStyle}" FontSize="18" Text="{Binding CurrentLocation}"/>
             </StackLayout>
 
             <StackLayout IsVisible="{Binding DisplayErrorMsg}" Style="{StaticResource DisplayErrorStack}">
-                <Label FontSize="20" HorizontalTextAlignment="Center" Text="{Binding ErrorMsg}"/>
+                <Label FontSize="20" Style="{StaticResource CenterLabelStyle}" Text="{Binding ErrorMsg}"/>
             </StackLayout>
         </StackLayout>
     </StackLayout>

@@ -2,7 +2,8 @@ using GalaSoft.MvvmLight;
 using Plugin.Connectivity;
 using System;
 using System.Windows.Input;
-using Weather_Application.Interface;
+using Weather_Application.Interfaces;
+using Weather_Application.Model;
 using Xamarin.Forms;
 
 namespace Weather_Application.ViewModel
@@ -11,6 +12,7 @@ namespace Weather_Application.ViewModel
     {
         INavigationService _navigationService;
         IOpenWeatherAPIService _openWeatherAPIService;
+        IDataStore _dataStore;
         public ICommand GetCityWeatherCommand { protected set; get; }
         public ICommand HistoryCommand { protected set; get; }
 
@@ -95,10 +97,12 @@ namespace Weather_Application.ViewModel
             set { _displayWelcomeMsg = value; RaisePropertyChanged(); }
         }
 
-        public MainViewModel(INavigationService navigationService, IOpenWeatherAPIService openWeatherAPIService)
+        public MainViewModel(INavigationService navigationService, IOpenWeatherAPIService openWeatherAPIService, IDataStore dataStore)
         {
             _navigationService = navigationService;
             _openWeatherAPIService = openWeatherAPIService;
+            _dataStore = dataStore;
+
             GetCityWeatherCommand = new Command(CityWeatherAsync);
             HistoryCommand = new Command(History);
             _displayWelcomeMsg = true;
@@ -108,8 +112,11 @@ namespace Weather_Application.ViewModel
         {
             DisplayWelcomeMsg = false;
             DisplayErrorMsg = false;
+            DisplayWeather = false;
             IsLoading = true;
             DateTime currentDay = DateTime.Today;
+
+            var s = _dataStore.GetAllWeatherHistory();
 
             if (!string.IsNullOrEmpty(_cityText))
             {
@@ -118,8 +125,7 @@ namespace Weather_Application.ViewModel
                     if (CrossConnectivity.Current.IsConnected)
                     {
                         var apiResuslt = await _openWeatherAPIService.GetCityWeatherAsync(_cityText);
-
-                    
+                        
                         if (apiResuslt != null)
                         {
                             CurrentDate = currentDay.ToString("D");
@@ -137,8 +143,11 @@ namespace Weather_Application.ViewModel
 
                             CurrentLocation = apiResuslt.name + ", " + apiResuslt.sys.country;
 
+                            SaveToHistoryData();
+
                             IsLoading = false;
                             DisplayErrorMsg = false;
+                            DisplayWelcomeMsg = false;
                             DisplayWeather = true;
                         }
                         else
@@ -172,6 +181,7 @@ namespace Weather_Application.ViewModel
         {
             IsLoading = false;
             DisplayWeather = false;
+            DisplayWelcomeMsg = false;
             DisplayErrorMsg = true;
             ErrorMsg = errorMsg;
         }
@@ -180,6 +190,24 @@ namespace Weather_Application.ViewModel
         {
             var results = Math.Round(kelvin - 273.15);
             return results;
+        }
+
+        private void SaveToHistoryData()
+        {
+            DateTime currentDay = DateTime.Today;
+
+            HistoryItem item = new HistoryItem()
+            {
+                SearchDate = currentDay,
+                City = CityText,
+                MaxTemp = Max,
+                MinTemp = Min,
+                Temp = Temp,
+                TempDescription = CurrentDescription,
+                WeatherIcon = WeatherIcon
+            };
+
+            _dataStore.AddWeatherHistory(item);
         }
     }
 }
