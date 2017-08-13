@@ -116,8 +116,6 @@ namespace Weather_Application.ViewModel
             IsLoading = true;
             DateTime currentDay = DateTime.Today;
 
-            var s = _dataStore.GetAllWeatherHistory();
-
             if (!string.IsNullOrEmpty(_cityText))
             {
                 try
@@ -194,7 +192,7 @@ namespace Weather_Application.ViewModel
 
         private void SaveToHistoryData()
         {
-            DateTime currentDay = DateTime.Today;
+            DateTime currentDay = DateTime.Now;
 
             HistoryItem item = new HistoryItem()
             {

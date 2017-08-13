@@ -17,7 +17,7 @@ namespace Weather_Application.Service
             _sqlconnection.CreateTable<HistoryItem>();
         }
         
-        public IEnumerable<HistoryItem> GetAllWeatherHistory()
+        public IList<HistoryItem> GetAllWeatherHistory()
         {
             return (from t in _sqlconnection.Table<HistoryItem>() select t).ToList();
         }

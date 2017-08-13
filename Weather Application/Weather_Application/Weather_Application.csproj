@@ -47,6 +47,7 @@
     <Compile Include="Model\RootObject.cs" />
     <Compile Include="Service\LocalDataStore.cs" />
     <Compile Include="Service\OpenWeatherAPIService.cs" />
+    <Compile Include="ViewModel\HistoryRowViewModel.cs" />
     <Compile Include="ViewModel\HistoryViewModel.cs" />
     <Compile Include="View\HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>

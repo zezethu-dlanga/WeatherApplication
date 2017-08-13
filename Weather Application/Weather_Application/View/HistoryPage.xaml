@@ -4,16 +4,16 @@
              x:Class="Weather_Application.View.HistoryPage" Title="History">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
-            <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryData}">
+            <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryDataItem}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Style="{StaticResource ListPaddingStyle}">
-                                <Label Text="{Binding CityName}" HorizontalOptions="StartAndExpand"/>
+                            <StackLayout Orientation="Vertical" Style="{StaticResource ListPaddingStyle}">
+                                <Label Text="{Binding City}" VerticalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Medium"/>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Temp}"/>
-                                    <Label Text="{Binding ViewDate}"/>
+                                    <Label Text="{Binding Temp, StringFormat='{0}° C'}" HorizontalOptions="Start" TextColor="#B45F04"/>
+                                    <Label Text="{Binding SearchDate}" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
