@@ -4,6 +4,9 @@
              x:Class="Weather_Application.View.HistoryPage" Title="History">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout IsVisible="{Binding DisplayErrorMsg}" Style="{StaticResource DisplayErrorStack}">
+                <Label FontSize="20" Style="{StaticResource CenterLabelStyle}" Text="{Binding ErrorMsg}"/>
+            </StackLayout>
             <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryDataItem}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,4 +25,12 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="HistoryoolbarItem" Command="{Binding DeleteAllCommand}" Text="History" Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" iOS="deleteAll.png" Android="deleteAll.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
 </ContentPage>

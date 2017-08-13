@@ -17,10 +17,12 @@ namespace Weather_Application.ViewModel
         public IList<HistoryItem> _historyItems;
         private ObservableCollection<HistoryRowViewModel> _historyDataItem;
         private HistoryRowViewModel _historyRowViewModel;
+        private bool _displayErrorMsg, _isRefreshing;
+        private string _errorMsg;
 
         public ICommand RefreshCommand { protected set; get; }
-
-        private bool _isRefreshing = false;
+        public ICommand DeleteAllCommand { protected set; get; }
+        
         public bool IsRefreshing
         {
             get { return _isRefreshing; }
@@ -31,6 +33,18 @@ namespace Weather_Application.ViewModel
             }
         }
 
+        public string ErrorMsg
+        {
+            get { return _errorMsg; }
+            set { _errorMsg = value; RaisePropertyChanged(); }
+        }
+
+        public bool DisplayErrorMsg
+        {
+            get { return _displayErrorMsg; }
+            set { _displayErrorMsg = value; RaisePropertyChanged(); }
+        }
+        
         public IList<HistoryItem> HistoryItems
         {
             get { return _historyItems; }
@@ -53,7 +67,8 @@ namespace Weather_Application.ViewModel
         {
             _navigationService = navigationService;
             _dataStore = dataStore;
-            RefreshCommand = new Command(() => Refresh());
+            RefreshCommand = new Command(Refresh);
+            DeleteAllCommand = new Command(DeleteAll);
 
             RetrieveHistoryList();
         }
@@ -65,12 +80,20 @@ namespace Weather_Application.ViewModel
             IsRefreshing = false;
         }
 
+        public void DeleteAll()
+        {
+            _dataStore.DeleteAllWeatherHistory();
+            Refresh();
+        }
+
         public void RetrieveHistoryList()
         {
             HistoryItems = _dataStore.GetAllWeatherHistory();
 
-            if(HistoryItems != null)
+            if(!HistoryItems.Count.Equals(0))
             {
+                DisplayErrorMsg = false;
+
                 var data = HistoryItems.Select(
                 x => new HistoryRowViewModel()
                 {
@@ -86,6 +109,12 @@ namespace Weather_Application.ViewModel
                 });
 
                 HistoryDataItem = new ObservableCollection<HistoryRowViewModel>(data);
+            }
+            else
+            {
+                HistoryDataItem = null;
+                DisplayErrorMsg = true;
+                ErrorMsg = "You have no weather history.";
             }
         }
     }

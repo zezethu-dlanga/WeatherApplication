@@ -31,7 +31,12 @@ namespace Weather_Application.Service
         {
             _sqlconnection.Delete<HistoryItem>(id);
         }
-        
+
+        public void DeleteAllWeatherHistory()
+        {
+            _sqlconnection.DeleteAll<HistoryItem>();
+        }
+
         public void AddWeatherHistory(HistoryItem weatherHistory)
         {
             _sqlconnection.Insert(weatherHistory);

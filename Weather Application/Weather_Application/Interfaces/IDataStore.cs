@@ -8,6 +8,7 @@ namespace Weather_Application.Interfaces
         IList<HistoryItem> GetAllWeatherHistory();
         HistoryItem GetWeatherHistory(int id);
         void DeleteWeatherHistory(int id);
+        void DeleteAllWeatherHistory();
         void AddWeatherHistory(HistoryItem weatherHistory);
     }
 }
