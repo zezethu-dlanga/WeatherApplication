@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using Weather_Application.Interfaces;
 using Weather_Application.Model;
+using Xamarin.Forms;
 
 namespace Weather_Application.ViewModel
 {
@@ -16,30 +18,51 @@ namespace Weather_Application.ViewModel
         private ObservableCollection<HistoryRowViewModel> _historyDataItem;
         private HistoryRowViewModel _historyRowViewModel;
 
+        public ICommand RefreshCommand { protected set; get; }
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public IList<HistoryItem> HistoryItems
         {
             get { return _historyItems; }
-            set { _historyItems = value; }
+            set { _historyItems = value; RaisePropertyChanged(); }
         }
 
         public ObservableCollection<HistoryRowViewModel> HistoryDataItem
         {
             get { return _historyDataItem; }
-            set { _historyDataItem = value; }
+            set { _historyDataItem = value; RaisePropertyChanged(); }
         }
 
         public HistoryRowViewModel HistoryRowViewModel
         {
             get { return _historyRowViewModel; }
-            set { _historyRowViewModel = value; }
+            set { _historyRowViewModel = value; RaisePropertyChanged(); }
         }
 
         public HistoryViewModel(INavigationService navigationService, IDataStore dataStore)
         {
             _navigationService = navigationService;
             _dataStore = dataStore;
+            RefreshCommand = new Command(() => Refresh());
 
             RetrieveHistoryList();
+        }
+
+        public void Refresh()
+        {
+            IsRefreshing = true;
+            RetrieveHistoryList();
+            IsRefreshing = false;
         }
 
         public void RetrieveHistoryList()

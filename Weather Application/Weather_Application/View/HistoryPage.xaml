@@ -4,7 +4,7 @@
              x:Class="Weather_Application.View.HistoryPage" Title="History">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
-            <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryDataItem}">
+            <ListView x:Name="HistoryList" ItemsSource="{Binding HistoryDataItem}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
